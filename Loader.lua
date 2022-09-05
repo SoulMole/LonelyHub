@@ -2,7 +2,7 @@ getgenv().MainColor = Color3.fromRGB(144, 66, 245)
 
 local MainColor = getgenv().MainColor
 local PhantomForcesGameID = 292439477
-local PhantomForcesLoadstring = "https://raw.githubusercontent.com/SoulMole/LonelyHub/main/PhantomForces.lua"
+local PhantomForcesLoadstring = "https://raw.githubusercontent.com/SoulMole/LonelyHub/main/PhantomForces.lua?token=GHSAT0AAAAAABX7SKVU332IOS5INL7EIINAYYV4TFQ"
 
 local function LoadGUI()
     local LonelyLoader = Instance.new("ScreenGui")
@@ -86,9 +86,9 @@ local function LoadGUI()
     ContentArea.Position = UDim2.new(0.0333333351, 0, 0.226666331, 0)
     ContentArea.Size = UDim2.new(0, 278, 0, 117)
 
+
     GameButton.Name = "GameButton"
     GameButton.Parent = ContentArea
-    GameButton.BackgroundColor3 = getgenv().LH_Color
     GameButton.BorderSizePixel = 0
     GameButton.Position = UDim2.new(0.0816766769, 0, 0.155548275, 0)
     GameButton.Size = UDim2.new(0, 233, 0, 35)
@@ -121,15 +121,43 @@ local function LoadGUI()
     local function CloseScript()
         local script = Instance.new('LocalScript', CloseButton)  
 
-        local CloseBtn = script.Parent 
-        local Elements = {CloseBtn, script.Parent.Parent, script.Parent.Parent['ContentArea'], script.Parent.Parent['HeaderCover'], script.Parent.Parent['Header'], script.Parent.Parent['ContentArea']['Developer'], script.Parent.Parent['ContentArea']['GameButton'], script.Parent.Parent['TextLabel']}
+        local CloseBtn = script.Parent
+        local Main = script.Parent.Parent
+        local e1 = script.Parent.Parent['ContentArea']
+        local e2 = script.Parent.Parent['HeaderCover']
+        local e3 = script.Parent.Parent['Header']
+        local e4 = script.Parent.Parent['ContentArea']['Developer']
+        local e5 = script.Parent.Parent['ContentArea']['GameButton']
+        local e6 = script.Parent.Parent['TextLabel']
         
         CloseBtn.MouseButton1Click:Connect(function()
-            for _,e in pairs(Elements) do
-                game.TweenService:Create(e, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
-                    ImageTransparency = 1
-                }):Play()
-            end
+            game.TweenService:Create(CloseBtn, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                ImageTransparency = 1
+            }):Play()
+            game.TweenService:Create(Main, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                BackgroundTransparency = 1
+            }):Play()
+            game.TweenService:Create(e1, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                BackgroundTransparency = 1
+            }):Play()
+            game.TweenService:Create(e2, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                BackgroundTransparency = 1
+            }):Play()
+            game.TweenService:Create(e3, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                BackgroundTransparency = 1
+            }):Play()
+            game.TweenService:Create(e4, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                BackgroundTransparency = 1,
+                TextTransparency = 1
+            }):Play()
+            game.TweenService:Create(e5, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                BackgroundTransparency = 1,
+                TextTransparency = 1
+            }):Play()
+            game.TweenService:Create(e6, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                BackgroundTransparency = 1,
+                TextTransparency = 1
+            }):Play()
             wait(0.25)
             script.Parent.Parent.Parent:Destroy()
         end)
@@ -139,9 +167,14 @@ local function LoadGUI()
     -- Game Load Script
     local function GameLoadScript()
         local script = Instance.new('LocalScript', GameButton)
-        
-        script.Parent.MouseButton1Click:Connect(function()       
-            loadstring(game:HttpGet(PhantomForcesLoadstring))()
+        local Loaded = false
+
+        wait(2)
+        script.Parent.Text = "Phantom Forces"
+        local Loaded = true
+        script.Parent.MouseButton1Click:Connect(function()
+            if not Loaded then return end
+            loadstring(game:HttpGet(PhantomForcesLoadstring, true))()
             script.Parent.Parent.Parent.Parent:Destroy()
         end)
     end

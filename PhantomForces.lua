@@ -707,7 +707,7 @@ MovementSection:NewToggle("Bunny Hop", "Allows to bunny hop like a retard", func
     end
 end)
 
-local ChatBotOn = true
+local ChatBotOn = false
 
 local localplayer = game:GetService("Players").LocalPlayer
     
@@ -744,8 +744,6 @@ if (type(v) == "table") then
     end
 end
 end
-
-
 
 local remoteevent = debug.getupvalue(network.send, 1)
 local networkfuncs = debug.getupvalue(getconnections(remoteevent.OnClientEvent)[1].Function, 1)
@@ -795,11 +793,12 @@ end
 local oldconsolechatted = networkfuncs[consoleidx]
 networkfuncs[consoleidx] = function(...)
 oldconsolechatted(...)
-network:send("chatted", "[BOT] we get it console, no need to brag your a smarter bot >;<")
+if ChatBotOn then network:send("chatted", "[BOT] we get it console, no need to brag your a smarter bot >;<") end
 end
 
 FunSection:NewToggle("Bible Bot", "enables the bible chat bot", function(state)
-    if state then
+    ChatBotOn = state
+    if ChatBotOn then
         network:send("chatted", "[BOT] Hey guy's, I'm a lonelyhub chat bot, best in the business")
         wait()
         network:send("chatted", "[BOT] For a list of commands, type !help")
