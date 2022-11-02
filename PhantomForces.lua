@@ -48,7 +48,7 @@ local UserInputService = game:GetService("UserInputService")
 local Players = game:GetService("Players")
 local LocalPlayer = game.Players.LocalPlayer
  
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SoulMole/1Lonely-Hub/master/uilibrary.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SoulMole/1Lonely-Hub/master/uilibrary.lua?token=GHSAT0AAAAAAB2V45HOMGEE3G7JIZS2V4GUY3CKONA"))()
 local Window = Library.CreateLib("lonely hub".." | v".. Version, themes)
 
 local SilentAimTab = Window:NewTab("Silent Aim")
@@ -330,7 +330,7 @@ SilentAimSection:NewDropdown("Target Part", "", {"Head", "Torso", "Right Arm", "
 SAPanicSection:NewToggle("Panic Mode", "Will track closest player if they are within panic distance", function(state) panicMode = state end)
 SAPanicSection:NewSlider("Panic Distance", "", 40, 5, function(s) panicDistance = s end)
 
-CIELUVInterpolator = LoadStringUrl("https://raw.githubusercontent.com/SoulMole/1Lonely-Hub/master/utils/cieluv_interpolator.lua")
+CIELUVInterpolator = LoadStringUrl("https://raw.githubusercontent.com/SoulMole/1Lonely-Hub/master/utils/cieluv_interpolator.lua?token=GHSAT0AAAAAAB2V45HPVM7KC7KP7DKMB67OY3CKNVA")
 local HealthbarLerp = CIELUVInterpolator:Lerp(Color3.fromRGB(255, 71, 71), Color3.fromRGB(71, 255, 71))
 
 local ESPElementsList = {}
