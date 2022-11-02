@@ -2,7 +2,7 @@ getgenv().MainColor = Color3.fromRGB(144, 66, 245)
 
 local MainColor = getgenv().MainColor
 local PhantomForcesGameID = 292439477
-local PhantomForcesLoadstring = "https://raw.githubusercontent.com/SoulMole/LonelyHub/main/PhantomForces.lua?token=GHSAT0AAAAAABX7SKVU332IOS5INL7EIINAYYV4TFQ"
+local PhantomForcesLoadstring = "https://raw.githubusercontent.com/SoulMole/LonelyHub/main/PhantomForces.lua"
 
 local function LoadGUI()
     local LonelyLoader = Instance.new("ScreenGui")
